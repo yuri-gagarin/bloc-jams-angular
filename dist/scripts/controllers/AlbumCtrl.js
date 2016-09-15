@@ -1,7 +1,8 @@
 (function() {
     function AlbumCtrl (Fixtures, SongPlayer) {
         this.albumData = Fixtures.getAlbum();
-        this.songPLayer = SongPlayer;
+        this.songPlayer = SongPlayer;
+        this.log = function(val) { console.log(val)};
     }
     
     angular
