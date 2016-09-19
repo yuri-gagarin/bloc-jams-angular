@@ -54,7 +54,10 @@
                         $document.unbind('mousemove.thumb');
                         $document.unbind('mouseup.thumb');
                     });
-                };               
+                };
+                scope.thumbStyle = function() {
+                    return {width: percentString()};
+                };
             }
         };        
     }
