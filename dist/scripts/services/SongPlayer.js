@@ -11,31 +11,6 @@
           * @type {Object}
           */
           var currentBuzzObject = null;
-         
-          /**
-          * @function setSong
-          * @desc Stops currently playing song and loads new audio file as currentBuzzObject
-          * @param {Object} song
-          */
-          var setSong = function(song) {
-            if (currentBuzzObject) {
-                currentBuzzObject.stop();
-                SongPlayer.currentSong.playing = null;
-            }
-            currentBuzzObject = new buzz.sound(song.audioUrl, {
-                formats: ['mp3'],
-                preload: true
-            });
-              
-            currentBuzzObject.bind('timeupdate', function() {
-                $rootScope.$apply(function() {
-                    SongPlayer.currentTime = currentBuzzObject.getTime();
-                });
-            });
-
-                  
-            SongPlayer.currentSong = song;
-          };
           /**
           * @desc SongPlayer.currentSong object
           * @type {Object}
@@ -58,6 +33,33 @@
           * @type {Number}
           */
           SongPlayer.volume = 80;
+          /**
+          * @function setSong
+          * @desc Stops currently playing song and loads new audio file as currentBuzzObject
+          * @param {Object} song
+          */
+         
+          var setSong = function(song) {
+            if (currentBuzzObject) {
+                currentBuzzObject.stop();
+                SongPlayer.currentSong.playing = null;
+            }
+            currentBuzzObject = new buzz.sound(song.audioUrl, {
+                formats: ['mp3'],
+                preload: true
+            });
+              
+            currentBuzzObject.bind('timeupdate', function() {
+                $rootScope.$apply(function() {
+                    SongPlayer.currentTime = currentBuzzObject.getTime();
+                });
+            });
+
+                  
+            SongPlayer.currentSong = song;
+          };
+        
+          
           
           var playSong = function(song) {
               currentBuzzObject.play();
